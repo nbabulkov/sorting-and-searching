@@ -1,6 +1,10 @@
 #pragma once
 #include "GeneralUnit.h"
 
+//
+// Uses MSD Radix Sort for 
+// lexicographical sorting
+//
 class AlphabeticallySortingUnit:
 	public GeneralUnit
 {

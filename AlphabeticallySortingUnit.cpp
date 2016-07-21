@@ -42,13 +42,18 @@ void AlphabeticallySortingUnit::copy(const AlphabeticallySortingUnit& a)
 }
 
 ///
-/// Main functions
+/// Main functions:
 ///
 void AlphabeticallySortingUnit::sort()
 {
 	sortGroup(0, size, 0);
 }
 
+//
+// Sorts the strings by the n-th character
+// and then executes itself on the groups of strings
+// with the same n-th character
+//
 void AlphabeticallySortingUnit::sortGroup(const int start, const  int end, const int depth)
 {
 	GeneralUnit::zeroOutArr(countingArr, SIZEOFALPH);
@@ -75,6 +80,9 @@ void AlphabeticallySortingUnit::sortGroup(const int start, const  int end, const
 	}
 }
 
+//
+// Applies counting sort lexicographically
+//
 void AlphabeticallySortingUnit::countingSort(const int start, const int end, const int depth)
 {
 	bool allTheSame = assignToCntArr(start, end, depth);
@@ -97,6 +105,10 @@ void AlphabeticallySortingUnit::countingSort(const int start, const int end, con
 	shallowCopyToStrings(tempStr, currSize, start);
 }
 
+//
+// Returns the index in the array where
+// to put the string with n-th letter 
+//
 int AlphabeticallySortingUnit::indexInCntArr(char letter) const
 {
 	// '\0' == 0
@@ -110,6 +122,9 @@ bool AlphabeticallySortingUnit::areTheSame(const char c1, const char c2) const
 	return c1 == c2 && c1 != '\0';
 }
 
+//
+// Assigns the current characters in the array used by the counting sort
+// 
 bool AlphabeticallySortingUnit::assignToCntArr(const int start, const int end, const int depth)
 {
 	bool allTheSame = true;
